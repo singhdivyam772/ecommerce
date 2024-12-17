@@ -7,6 +7,7 @@ import Footer from './AllComponents/Footer';
 import LandingPage from './Pages/LandingPage';
 import { Route, Routes } from 'react-router-dom';
 import ProductsDetails from './Pages/ProductsDetails';
+import Cart from './Pages/AddToCart';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         
       <Route path="/" element={<LandingPage/>}/>
       <Route path="/productdetails" element={<ProductsDetails/>}/>
+      <Route path="/addtocart" element={<Cart/>}/>
     </Routes>
       <Footer/>
     </div>

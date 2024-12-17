@@ -16,6 +16,8 @@ import {
 import { FaCartArrowDown, FaUserAlt, FaHeart   } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 
+import { IoCartOutline } from "react-icons/io5";
+
 
 
 const components= [
@@ -86,7 +88,7 @@ export function NavigationMenuDemo() {
         <div
           className={`
             fixed w-full h-[4rem] bg-white flex justify-between items-center px-6 shadow z-50 transition-all ease-in-out
-            ${scrollPosition > 64 ? "top-0" : "top-12"}
+            ${scrollPosition > 10 ? "top-0" : "top-12"}
           `}
         >
           {/* logo */}
@@ -159,7 +161,14 @@ export function NavigationMenuDemo() {
   
           {/* admin cart searchbox */}
           <div className="flex justify-center items-center gap-5">
-          <FaCartArrowDown className=" text-pink-500 text-xl" />
+            <div className=" relative">
+              <FaCartArrowDown className=" text-pink-500 text-xl" />
+              <span className=" absolute z-10 top-[-0.8rem] left-[0.49rem]  ">
+                  <p className=" text-sm  font-bold text-green-500">
+                    1
+                  </p>
+                </span>
+            </div>
             <FaHeart  className=" text-pink-500 text-xl" />
             <FaUserAlt className=" text-pink-500 text-xl" />
           </div>
