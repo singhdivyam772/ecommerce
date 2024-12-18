@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 const ImageSlider = () => {
     const images = [
         "https://res.cloudinary.com/drj0uehgx/image/upload/v1734503413/banner1_ast0ox.jpg",
-        "https://res.cloudinary.com/drj0uehgx/image/upload/v1734503412/banner2_eaofhi.jpg",
-        "https://res.cloudinary.com/drj0uehgx/image/upload/v1734503412/banner3_ldugkj.jpg",
+        "https://cdn.vectorstock.com/i/500p/26/78/watercolor-set-wedding-invitation-card-vector-51672678.jpg",
+        "https://cdn.vectorstock.com/i/500p/70/53/vintage-ticket-wedding-invitation-vector-9017053.jpg",
         "https://res.cloudinary.com/drj0uehgx/image/upload/v1734503412/banner5_bdgal3.jpg",
       ];
       return (

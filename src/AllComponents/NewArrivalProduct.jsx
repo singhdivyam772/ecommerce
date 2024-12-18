@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 import { BsEye } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx"; // Close icon
+import { useNavigate } from 'react-router-dom';
 
 const weddingCards = [
     {
@@ -50,6 +51,7 @@ const weddingCards = [
 
 const NewArrivalProduct = () => {
     const [modalImage, setModalImage] = useState(null); // Track which image is in the modal
+  const navigate = useNavigate()
 
     const openModal = (src) => {
         setModalImage(src);
@@ -60,10 +62,15 @@ const NewArrivalProduct = () => {
     };
 
     return (
-        <div>
+        <div className=' w-full mx-auto flex flex-col'>
+        <p className="max-w-7xl pl-4 pt-12 pb-4 text-xl md:text-5xl font-semibold text-pink-500 dark:text-neutral-200 font-sans"
+        >
+          New Arrivals
+        </p>
             <div className="grid w-full grid-cols-1 md:grid-cols-4 gap-6 p-4">
                 {weddingCards.map((data) => (
                     <div 
+                    onClick={() => navigate("/productdetails")}
                         key={data.id}
                         className="w-full cursor-pointer shadow-lg shadow-pink-200 bg-secondary rounded relative"
                     >

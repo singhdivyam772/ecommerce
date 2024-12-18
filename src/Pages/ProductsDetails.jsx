@@ -34,6 +34,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import HeaderAdjustment from "@/common/HeaderAdjustment";
+import NewArrivalProduct from "@/AllComponents/NewArrivalProduct";
 
 
 const ProductsDetails = () => {
@@ -59,7 +60,7 @@ const ProductsDetails = () => {
   };
 
   return (
-    <div className="mt-12 w-full min-h-[100vh] md:px-12 px-8 py-4">
+    <div className="mt-12 w-full flex flex-col min-h-[100vh] md:px-12 px-8 py-4">
 
       <HeaderAdjustment/>
 
@@ -221,7 +222,7 @@ const ProductsDetails = () => {
         </div>
       </div>
 
-     
+     <NewArrivalProduct/>
     </div>
   );
 };

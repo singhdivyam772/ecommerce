@@ -19,30 +19,11 @@ const LandingPage = () => {
 
       <AppleCardsCarouselDemo />
 
-      
-
-      {/* Render multiple cards */}
-      <div className=' w-full mx-auto flex flex-col'>
-        <p className="max-w-7xl pl-4 text-xl md:text-5xl font-semibold text-pink-500 dark:text-neutral-200 font-sans"
-        >
-          Our Products
-        </p>
-
-        <div  className="grid grid-cols-1 md:grid-cols-4 gap-8 p-4 cursor-pointer">
-          <OurProducts />
-        </div>
-      </div>
+      {/* our products */}
+      <OurProducts />
 
       {/* new arrival */}
-      <div className=' w-full mx-auto flex flex-col'>
-        <p className="max-w-7xl pl-4 py-2 text-xl md:text-5xl font-semibold text-pink-500 dark:text-neutral-200 font-sans"
-        >
-          New Arrivals
-        </p>
-
-          <NewArrivalProduct/>
-        
-      </div>
+      <NewArrivalProduct/>
       
     </div>
   );

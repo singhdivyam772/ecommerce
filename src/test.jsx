@@ -143,7 +143,7 @@ export function AppleCardsCarouselDemo() {
   return (
     (<div className="w-full h-full py-4">
       <h2
-        className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-semibold text-pink-500 dark:text-neutral-200 font-sans">
+        className="max-w-7xl pl-0 mx-auto text-xl md:text-5xl font-semibold text-pink-500 dark:text-neutral-200 font-sans">
           Our Variety of Wedding Cards      
         </h2>
       <Carousel items={cards} />
