@@ -37,7 +37,7 @@ const OurProducts = () => {
 
             {/* Bottom Shadow */}
             <div
-              className="w-full opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-10 transition-all duration-700 bg-gradient-to-b from-[rgb(0,0,0,0.001)] to-[rgb(0,0,0,0.5)] h-[100%] absolute bottom-0 left-0 right-0">
+              className="w-full opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-10 transition-all duration-700 bg-gradient-to-b from-[rgba(0,0,0,0.63)] to-[rgb(0,0,0,0.5)] h-[100%] absolute bottom-0 left-0 right-0">
             </div>
           </div>
         ))
