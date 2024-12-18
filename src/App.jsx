@@ -13,14 +13,13 @@ import CheckoutPage from './Pages/CheckoutPage';
 function App() {
   return (
     <div>
-       <NavigationMenuDemo className=" fixed top-0" />
+       <NavigationMenuDemo/>
       <Routes>
-        
-      <Route path="/" element={<LandingPage/>}/>
-      <Route path="/productdetails" element={<ProductsDetails/>}/>
-      <Route path="/addtocart" element={<Cart/>}/>
-      <Route path="/checkoutpage" element={<CheckoutPage/>}/>
-    </Routes>
+        <Route path="/" element={<LandingPage/>}/>
+        <Route path="/productdetails" element={<ProductsDetails/>}/>
+        <Route path="/addtocart" element={<Cart/>}/>
+        <Route path="/checkoutpage" element={<CheckoutPage/>}/>
+      </Routes>
       <Footer/>
     </div>
   );
