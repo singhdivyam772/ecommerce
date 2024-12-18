@@ -16,47 +16,37 @@ import {
 import { FaCartArrowDown, FaUserAlt, FaHeart   } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 
-import { IoCartOutline } from "react-icons/io5";
+// import { IoCartOutline } from "react-icons/io5";
+// react icons
+// import {FaTasks} from "react-icons/fa";
+// import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
+// import {TbLogout2, TbUsersGroup} from "react-icons/tb";
+// import {CiMenuFries} from "react-icons/ci";
+// import {MdLaptopMac, MdOutlineArrowRightAlt, MdOutlineKeyboardArrowRight} from "react-icons/md";
+// import {BsBuildings, BsCalendar2Date} from "react-icons/bs";
+// import {AiOutlineFire} from "react-icons/ai";
+// import {BiSupport} from "react-icons/bi";
+// import {FiUser} from "react-icons/fi";
+// import {IoSettingsOutline} from "react-icons/io5";
+import { TiShoppingCart } from "react-icons/ti";
+import { GoPersonAdd } from "react-icons/go";
+import { FaRegHeart } from "react-icons/fa6";
+
+import {FaDiscord} from "react-icons/fa";
+import {IoIosArrowDown, IoIosSearch} from "react-icons/io";
+import {TbBrandGithubFilled} from "react-icons/tb";
+import {CiMenuFries} from "react-icons/ci";
+import {MdDashboardCustomize, MdKeyboardArrowDown} from "react-icons/md";
+import {BsArrowRight} from "react-icons/bs";
+import {CgIfDesign} from "react-icons/cg";
+import {FaCubesStacked} from "react-icons/fa6"
 
 
 
-const components= [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-]
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { categoryName } from "@/data";
+
 
 export function NavigationMenuDemo() {
     const [scrollPosition, setScrollPosition] = React.useState(0);
@@ -73,6 +63,20 @@ export function NavigationMenuDemo() {
         window.removeEventListener("scroll", handleScroll);
       };
     }, []);
+
+    const [accountMenuOpen, setAccountMenuOpen] = useState(false)
+    const [isProductHover, setIsProductHover] = useState(false)
+    // const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+    const [productMobileMegaMenu, setProductMobileMegaMenu] = useState(false)
+    const [megaMenuSubItem, setMegaMenuSubItem] = useState("")
+
+    const [aboutHover, setAboutHover] = useState(false)
+    const [serviceHover, setServiceHover] = useState(false)
+    const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+    const [mobileAboutUsOpen, setMobileAboutUsOpen] = useState(false)
+    const [mobileServiceOpen, setMobileServiceOpen] = useState(false)
+
+    const navigate = useNavigate();
   
     return (
       <div className="flex flex-col w-full min-h-[4rem] shadow-2xl">
@@ -85,117 +89,141 @@ export function NavigationMenuDemo() {
         </div>
   
         {/* Sticky navbar */}
-        <div
-          className={`
-            fixed w-full h-[4rem] bg-white flex justify-between items-center px-6 shadow z-50 transition-all ease-in-out
-            ${scrollPosition > 10 ? "top-0" : "top-12"}
-          `}
-        >
-          {/* logo */}
-          <div>
-           <img 
-           className=" w-[4rem] h-12 rounded-full "
-            src="https://res.cloudinary.com/drj0uehgx/image/upload/v1733998721/DALL_E_2024-12-12_15.40.43_-_A_modern_and_elegant_logo_for_an_e-commerce_website_specializing_in_cards_and_gifts._The_design_features_a_stylized_gift_box_with_a_ribbon_incorporat_keuf0h.webp" alt="" srcset="" />
-          </div>
-  
-          {/* Navigation menu */}
-          <NavigationMenu className=" text-pink-500 ">
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="">Getting started</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                    <li className="row-span-3">
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
+        <nav 
+            className={"flex items-center justify-between w-full relative h-[4.1rem] px-2"
+            }>
+            <img src="https://i.ibb.co/0BZfPq6/darklogo.png" alt="logo" className="w-[60px] "/>
+            <ul className="items-center gap-[20px] text-[0.8rem] text-[#424242] lg:flex hidden">
+                <li 
+                onClick={() => navigate("/")}
+                className="transition-all duration-500 cursor-pointer hover:text-pink-500 capitalize flex items-center gap-[3px] group relative">
+                    Home
+                </li>
+                {categoryName?.map((category) => (
+                    <li 
+                        key={category.id} 
+                        className="transition-all duration-500 cursor-pointer hover:text-pink-500 capitalize flex items-center gap-[3px] group relative"
+                        onMouseOver={() => setAboutHover(true)}
+                        onMouseLeave={() => setAboutHover(false)}
+                        onClick={() => navigate(category.url)}
                         >
-                          {/* <Icons.logo className="h-6 w-6" /> */}
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            shadcn/ui
-                          </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components built with Radix UI and Tailwind CSS.
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
+                    {category?.name}
+                    <MdKeyboardArrowDown
+                        className="text-[1rem] text-[#424242] group-hover:text-pink-500 transition-all duration-500 group-hover:rotate-[180deg]"/>
+                    <article
+                        className="p-6 bg-white rounded-md boxShadow w-[500px] absolute top-[40px] z-[-1] left-[-100px] group-hover:translate-y-0 translate-y-[-20px] group-hover:opacity-100 opacity-0 group-hover:z-30 transition-all duration-300">
+
+                        <div className="grid grid-cols-2">
+                            <ul className="flex flex-col gap-[7px] text-[#424242]">
+                                {category?.subCategory.map((sub) => (
+                                <li key={sub?.id} className="flex items-center gap-[7px] hover:text-pink-500 transition-all duration-300">
+                                    <BsArrowRight className="text-[#424242] text-[0.9rem]" /> {sub.name}
+                                </li>
+                                ))}
+                            </ul>
+
+                            <div className="flex flex-col gap-[10px] border-l border-[#e5eaf2] pl-[30px]">
+                                <div className="flex items-center gap-[10px] text-[1rem] text-[#424242]">
+                                    <MdDashboardCustomize className="bg-blue-200 text-blue-900 p-1.5 rounded-full text-[2rem]" />
+                                    Full Customize
+                                </div>
+                            </div>
+                        </div>
+
+                        <img src="https://i.ibb.co/YRgsrsh/AD22-04.png" alt="image"
+                            className="w-full object-cover mt-4 rounded-sm h-[150px]" />
+                    </article>
                     </li>
-                    <ListItem href="/docs" title="Introduction">
-                      Re-usable components built using Radix UI and Tailwind CSS.
-                    </ListItem>
-                    <ListItem href="/docs/installation" title="Installation">
-                      How to install dependencies and structure your app.
-                    </ListItem>
-                    <ListItem href="/docs/primitives/typography" title="Typography">
-                      Styles for headings, paragraphs, lists...etc
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    {components.map((component) => (
-                      <ListItem
-                        key={component.title}
-                        title={component.title}
-                        href={component.href}
-                      >
-                        {component.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <a href="/docs" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Documentation
-                  </NavigationMenuLink>
-                </a>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-  
-          {/* admin cart searchbox */}
-          <div className="flex justify-center items-center gap-5">
-            <div className=" relative">
-              <FaCartArrowDown className=" text-pink-500 text-xl" />
-              <span className=" absolute z-10 top-[-0.8rem] left-[0.49rem]  ">
-                  <p className=" text-sm  font-bold text-green-500">
-                    1
-                  </p>
-                </span>
+                ))}
+                </ul>
+
+            <div className="flex items-center gap-[10px]">
+                <div className="relative lg:flex hidden">
+                    <input
+                        className="py-1.5 pr-4 border border-text pl-10 rounded-full outline-none focus:border-pink-500"
+                        placeholder="Search..."/>
+                    <IoIosSearch className="absolute top-[9px] left-3 text-[#424242] text-[1.3rem]"/>
+                </div>
+                <div className="relative flex items-center  gap-[15px]" onClick={() => navigate("/addtocart")}>
+                    <TiShoppingCart className="text-pink-500 cursor-pointer text-[1.5rem] relative" />
+                    <div className="absolute top-[-8px] right-[-8px] flex items-center justify-center bg-pink-500 text-white text-[0.7rem] w-[18px] h-[18px] rounded-full">
+                    3 
+                    </div>
+                </div>
+
+
+                <GoPersonAdd
+                    className="text-[1.5rem] cursor-pointer text-pink-500 transition-all duration-500 "/>
+                <FaRegHeart
+                    className="text-[1.4rem]  cursor-pointer text-pink-500 transition-all duration-500"/>
+
+                <CiMenuFries className="text-[1.6rem] text-[#424242]c cursor-pointer lg:hidden flex"
+                             onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}/>
             </div>
-            <FaHeart  className=" text-pink-500 text-xl" />
-            <FaUserAlt className=" text-pink-500 text-xl" />
-          </div>
-        </div>
+
+            <aside
+                className={` ${mobileSidebarOpen ? "translate-x-0 opacity-100 z-20" : "translate-x-[200px] opacity-0 z-[-1]"} lg:hidden bg-white boxShadow p-4 text-center absolute top-[55px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300`}>
+                <ul className="items-start gap-[20px] text-[0.8rem] text-gray-600 flex flex-col">
+
+                    <li className="hover:text-pink-500 group transition-all duration-500 cursor-pointer capitalize flex items-center gap-[10px]">
+                        Home
+                    </li>
+
+                    <li onClick={() => setMobileAboutUsOpen(!mobileAboutUsOpen)}
+                        className="hover:text-pink-500 group transition-all duration-500 cursor-pointer capitalize flex items-center gap-[10px]">
+                        About Us
+                        <IoIosArrowDown
+                            className={`${mobileAboutUsOpen ? "rotate-[180deg]" : "rotate-0"} text-gray-600 group-hover:text-pink-500 transition-all duration-300`}/>
+                    </li>
+
+                    {/* about us mega menu */}
+                    <div className={`${mobileAboutUsOpen ? "block" : "hidden"} group font-[500] ml-6`}>
+
+                        <ul className="flex flex-col gap-[7px] text-[#424242]">
+                            <li className="flex items-center gap-[7px] hover:text-pink-500 transition-all duration-300">
+                            <MdDashboardCustomize
+                                    className="bg-blue-200 text-blue-900 p-1.5 rounded-full text-[2rem]"/>                                Details
+                            </li>
+                            <li className="flex items-center gap-[7px] hover:text-pink-500 transition-all duration-300">
+                                <BsArrowRight className="text-[#424242] text-[0.9rem]"/>Company
+                                Location
+                            </li>
+                          
+                        </ul>
+
+                       
+                    </div>
+
+
+                    <li onClick={() => setMobileServiceOpen(!mobileServiceOpen)}
+                        className="hover:text-pink-500 group transition-all duration-500 cursor-pointer capitalize flex items-center gap-[10px]">
+                        Service
+                        <IoIosArrowDown
+                            className={`${mobileServiceOpen ? "rotate-0" : "rotate-[180deg]"} text-gray-600 group-hover:text-pink-500 transition-all duration-300`}/>
+                    </li>
+
+                    {/* service mega menu */}
+                    <div className={`${mobileServiceOpen ? "hidden" : "block"} font-[500] ml-6`}>
+
+                        <ul className="flex flex-col gap-[7px] text-[#424242]">
+                            <li className="flex items-center gap-[7px] hover:text-pink-500 transition-all duration-300">
+                                 <MdDashboardCustomize
+                                    className="bg-blue-200 text-blue-900 p-1.5 rounded-full text-[2rem]"/> Company
+                                Details
+                            </li>
+                            <li className="flex items-center gap-[7px] hover:text-pink-500 transition-all duration-300">
+                                <BsArrowRight className="text-[#424242] text-[0.9rem]"/>Company
+                                Location
+                            </li>
+                           
+                        </ul>
+
+                       
+                    </div>
+                </ul>
+            </aside>
+        </nav>
       </div>
     );
   }
   
-  const ListItem = React.forwardRef(({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-              className
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-              {children}
-            </p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    );
-  });
-  ListItem.displayName = "ListItem";

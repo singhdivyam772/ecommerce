@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import HeaderAdjustment from "@/common/HeaderAdjustment";
 
 
 const ProductsDetails = () => {
@@ -59,6 +60,9 @@ const ProductsDetails = () => {
 
   return (
     <div className="mt-12 w-full min-h-[100vh] md:px-12 px-8 py-4">
+
+      <HeaderAdjustment/>
+
       {/* Product detail with the left-right */}
       <div className="flex md:flex-row flex-col items-center">
         {/* Left side content */}

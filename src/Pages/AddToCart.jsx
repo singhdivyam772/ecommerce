@@ -11,12 +11,18 @@ import { FaTrash } from "react-icons/fa";
 import { Button } from '@/components/ui/button';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProductFromCart } from '@/redux/Slices/cartSlice';
+import HeaderAdjustment from '@/common/HeaderAdjustment';
+import { useNavigate } from 'react-router-dom';
+import NewArrivalProduct from '@/AllComponents/NewArrivalProduct';
 const Cart = () => {
    const cartProducts = useSelector((state) => state.cart.products)
    const dispatch = useDispatch();
 
+   const navigate = useNavigate()
+
    return (
       <div className=' flex flex-col justify-start items-start w-screen min-h-[50rem] px-6 mb-5'>
+         <HeaderAdjustment/>
          {/* cart header */}
          <section className='flex flex-col justify-center items-center md:h-[20rem] h-[14rem] w-full '>
             <h1 className=' text-4xl text-pink-500 font-medium leading-10 py-2 '>
@@ -82,11 +88,17 @@ const Cart = () => {
                <p className=' font-medium text-xl leading-10 text-pink-600'>Rs. 7,354.40</p>
             </div>
             <p className=' font-medium text-sm leading-7 text-pink-600'>Tax included. Shipping calculated at checkout.</p>
-            <Button className="px-4 py-2 mt-4 rounded-xl bg-pink-500 hover:bg-pink-500 transition-all duration-300 hover:shadow-lg hover:shadow-pink-600 text-white text-xs font-normal "
-            >Checkout</Button>
+            <Button
+            onClick={() => navigate("/checkoutpage")}
+            className="px-4 py-2 mt-4 rounded-xl bg-pink-500 hover:bg-pink-500 transition-all duration-300 hover:shadow-lg hover:shadow-pink-600 text-white text-xs font-normal "
+            >
+               Checkout
+            </Button>
             </section>
          </section>
          
+
+         {/* <NewArrivalProduct/> */}
       </div >
    )
 }
