@@ -1,4 +1,4 @@
-"use client";;
+
 import React, {
   useEffect,
   useRef,
@@ -13,6 +13,7 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 export const CarouselContext = createContext({
@@ -77,17 +78,18 @@ export const Carousel = ({
     (<CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <div className="relative w-full">
         <div
-          className="flex w-full overflow-x-scroll  overscroll-x-auto py-10 scroll-smooth [scrollbar-width:none]"
+          className="flex w-full overflow-x-scroll overscroll-x-auto py-12 scroll-smooth [scrollbar-width:none]"
           ref={carouselRef}
           onScroll={checkScrollability}>
           <div
             className={cn(
-              "absolute right-0  z-[1000] h-auto  w-[5%] overflow-hidden bg-gradient-to-l"
+              "absolute right-0  z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"
             )}></div>
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
+              "flex flex-row justify-start  gap-4 pl-4",
+              // remove max-w-4xl if you want the carousel to span the full width of its container
               "max-w-7xl mx-auto "
             )}>
             {items.map((item, index) => (
@@ -107,7 +109,7 @@ export const Carousel = ({
                   },
                 }}
                 key={"card" + index}
-                className="last:pr-[5%]  md:last:pr-[33%]  rounded-3xl">
+                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl">
                 {item}
               </motion.div>
             ))}
@@ -115,13 +117,13 @@ export const Carousel = ({
         </div>
         <div className="flex justify-end gap-2 mr-10">
           <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100  flex items-center justify-center disabled:opacity-50"
+            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}>
             <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
           </button>
           <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100  flex items-center justify-center disabled:opacity-50"
+            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}>
             <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
@@ -169,7 +171,8 @@ export const Card = ({
     onCardClose(index);
   };
 
-  return (<>
+  return (
+  <>
     <AnimatePresence>
       {open && (
         <div className="fixed inset-0 h-screen z-50 overflow-auto">
@@ -208,7 +211,8 @@ export const Card = ({
     <motion.button
       layoutId={layout ? `card-${card.title}` : undefined}
       onClick={handleOpen}
-      className="rounded-3xl bg-pink-100 dark:bg-neutral-900 h-80 w-56 max-h-[45rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10">
+      className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10">
+      
       <div
         className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
       <div className="relative z-40 p-8">
@@ -222,12 +226,13 @@ export const Card = ({
           className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2">
           {card.title}
         </motion.p>
+       
       </div>
       <BlurImage
         src={card.src}
         alt={card.title}
         fill
-        className="object-cover absolute z-10 inset-0" />
+        className="object-cover absolute z-10 w-full h-full inset-0" />
     </motion.button>
   </>);
 };
